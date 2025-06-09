@@ -1,0 +1,15 @@
+[project]
+
+name = "telegram-analyzer"
+version = "0.1.0"
+description = "AI-аналізатор Telegram-чатів менеджерів"
+readme = "README.md"
+requires-python = ">=3.9"
+authors = [
+  { name = "Andrii Borch", email = "skabinausa@gmail.com" }
+]
+dependencies = [
+  "telethon",
+  "python-dotenv",
+ 
+]
