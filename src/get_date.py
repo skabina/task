@@ -14,10 +14,10 @@ api_hash = os.getenv('API_HASH')
 client = TelegramClient('date', api_id, api_hash)
 
 
-one_month_ago = datetime.now(timezone.utc) - timedelta(days=1)  
+one_month_ago = datetime.now(timezone.utc) - timedelta(month=1)  
 
 
-async def get_Date(client):
+async def get_date(client):
  
     chats_data = []
     
