@@ -1,14 +1,15 @@
 import os
-from getDate import get_Date
-from telethon import TelegramClient
 from dotenv import load_dotenv
+from telethon import TelegramClient
+from getDate import get_Date, client
+import asyncio
 
 
-
-
-def main():
-    print("Starting the Telegram client...")
-    # ...
+async def main():
     
+    await client.start() 
+    await get_Date(client)
+    await client.disconnect()
+
 if __name__ == "__main__":
-    main()
+    asyncio.run(main())  
