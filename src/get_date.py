@@ -7,13 +7,12 @@ from datetime import datetime, timedelta, timezone
 from telethon.errors import FloodWaitError
 
 load_dotenv()
-
 api_id = os.getenv('API_ID')
 api_hash = os.getenv('API_HASH')
 
 client = TelegramClient('date', api_id, api_hash)
 
-one_month_ago = datetime.now(timezone.utc) - timedelta(days=1)  # За останній день
+one_month_ago = datetime.now(timezone.utc) - timedelta(days=30)  # За останній день
 
 async def get_date(client):
     chats_data = []
