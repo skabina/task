@@ -11,5 +11,7 @@ authors = [
 dependencies = [
   "telethon",
   "python-dotenv",
- 
+  "google-generativeai",
+  "uv",
 ]
+
