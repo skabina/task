@@ -5,10 +5,7 @@ from dotenv import load_dotenv
 from telethon import TelegramClient
 from datetime import datetime, timedelta, timezone
 from telethon.errors import FloodWaitError
-
-load_dotenv()
-api_id = os.getenv('API_ID')
-api_hash = os.getenv('API_HASH')
+from config import api_id, api_hash
 
 client = TelegramClient('date', api_id, api_hash)
 
@@ -39,10 +36,7 @@ async def get_date(client):
                         await asyncio.sleep(e.seconds)  
                         continue  
 
-            # Відсортувати повідомлення за датою
-            messages.sort(key=lambda x: x["date"])
-
-        
+            messages.sort(key=lambda x: x["date"])    
             chat_info["messages"] = [msg["text"] for msg in messages]
 
             if chat_info["messages"]: 
@@ -50,11 +44,9 @@ async def get_date(client):
 
         else:
             print(f"\nПропускаємо канал: {dialog.name} — ID: {dialog.id}")
-
    
     with open('chats_data.json', 'w', encoding='utf-8') as json_file:
         json.dump(chats_data, json_file, ensure_ascii=False, indent=4)
-
 
 async def main():
     await client.start()
