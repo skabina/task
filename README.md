@@ -40,9 +40,6 @@ task/
 └── README.md
 ```
 
-
-
-
 ## Versions
 
 [Python](https://www.python.org): **3.13**
@@ -60,7 +57,6 @@ task/
 ## Installation & Usage
 ---
 
-```
 You must have on your local computer installed Python
 
 ```text
@@ -68,13 +64,13 @@ git clone https://github.com/your-username/telegram-analyzer-ai.git
 cd telegram-analyzer-ai
 ```
 
-
 Package manager
 ```text
 pip install uv
 ```
 
 Windows:
+```text
 python -m venv venv
 venv\Scripts\activate
 ```
@@ -89,7 +85,6 @@ You need to install **pyproject.toml**:
 ```text
 pip install pyproject.toml
 ```
-
 
 ### Environment Setup
 
@@ -118,13 +113,9 @@ AI_API_KEY=<your-api_ai>
 API_ID=<your-telegram-api_token>
 API_HASH=<your-telegram-api-hash>
 AI_API_KEY=<your-api_ai>
-
 ```
 
-
-
-
-##Running the Project
+5.Running the Project
 
 ```text 
 python src/main.py
