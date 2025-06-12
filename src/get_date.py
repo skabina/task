@@ -5,10 +5,7 @@ from dotenv import load_dotenv
 from telethon import TelegramClient
 from datetime import datetime, timedelta, timezone
 from telethon.errors import FloodWaitError
-
-load_dotenv()
-api_id = os.getenv('API_ID')
-api_hash = os.getenv('API_HASH')
+from config import api_id, api_hash
 
 client = TelegramClient('date', api_id, api_hash)
 
