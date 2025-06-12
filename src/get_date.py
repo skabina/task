@@ -36,10 +36,7 @@ async def get_date(client):
                         await asyncio.sleep(e.seconds)  
                         continue  
 
-            # Відсортувати повідомлення за датою
-            messages.sort(key=lambda x: x["date"])
-
-        
+            messages.sort(key=lambda x: x["date"])    
             chat_info["messages"] = [msg["text"] for msg in messages]
 
             if chat_info["messages"]: 
@@ -47,11 +44,9 @@ async def get_date(client):
 
         else:
             print(f"\nПропускаємо канал: {dialog.name} — ID: {dialog.id}")
-
    
     with open('chats_data.json', 'w', encoding='utf-8') as json_file:
         json.dump(chats_data, json_file, ensure_ascii=False, indent=4)
-
 
 async def main():
     await client.start()
