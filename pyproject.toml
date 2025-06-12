@@ -13,7 +13,5 @@ dependencies = [
   "python-dotenv",
   "google-generativeai",
   "uv",
-
- 
 ]
 

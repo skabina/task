@@ -7,23 +7,19 @@ def analiz_ai():
     genai.configure(api_key=ai_api_key)
     model = genai.GenerativeModel("gemini-1.5-flash")
 
-   
     with open('chats_data.json', 'r', encoding='utf-8') as file:
         chats = json.load(file)
 
     with open('ai_logs.txt', 'w', encoding='utf-8') as log_file:
-
 
         for chat in chats:
             chat_name = chat.get("chat_name")
             messages = chat.get("messages", [])
             if not messages:
                 continue
-
             
             dialogue_text = "\n".join(messages)
 
-            
             prompt = f"""
                     Ось переписка з клієнтом і менеджером:
                     {dialogue_text}
