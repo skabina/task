@@ -1,23 +1,74 @@
-# Telegram Analyzer з AI (Gemini)
+# Telegram Analyzer with AI (Gemini)
 
-Цей проєкт аналізує переписки менеджерів з клієнтами в Telegram, виявляючи:
-- 📌 Невиконані обіцянки (наприклад: "зроблю до кінця дня", але не зробив)
-- 😠 Проблемні діалоги з емоційним або негативним тоном
-- 📊 Основні метрики по роботі менеджерів
+A Python tool that connects to your Telegram account (via Telethon), reads messages from a chat or channel,  
+and sends them to a Google-powered generative AI for analysis.
 
 ---
 
-### ✅ Основні можливості:
-1. **Збір діалогів** з Telegram через Telethon API
-2. **Збереження в `chats_data.json`** у структурованому вигляді
-3. **AI-аналіз** кожного діалогу через [Gemini 1.5 Flash](https://cloud.google.com/vertex-ai/generative-ai/docs/overview)
-4. **Збереження результатів у `ai_logs.txt`** у зручному форматі
+
+## Table of Contents
+
+1. [Features](#features)  
+2. [Project Structure](#project-structure)  
+3. [Versions](#versions)  
+4. [Requirements](#requirements)  
+   - [Environment Setup](#environment-setup)  
+5. [Installation & Usage](#installation--usage)  
+
+---
+
+## Features
+
+- Authenticate to Telegram via [Telethon](https://docs.telethon.dev/).  
+- Pull messages (history, new messages, etc.).  
+- Call Google Generative AI to summarize or analyze text.  
+- Output results to file.
+
+## Project Structure
+```text
+task/
+├── .env
+├── src
+│   ├── main.py   
+│   ├── analyze.py   
+│   ├── config.py  
+│   ├── ai_analiz.py
+│   └── get_date.py         
+├── .gitignore                 
+├── .env              
+├── pyproject.toml            
+└── README.md
+```
 
 
+
+
+## Versions
+
+[Python](https://www.python.org): **3.13**
+[Telethon](https://docs.telethon.dev/en/stable/#): **1.40**
+[Google Generative AI](): **0.1.0**
 
 ## Requirements
 
+---
+
+1. Python 3.10+ installed on your system.  
+2. A Telegram API app (API_ID & API_HASH).  
+3. A Google Generative AI API key.  
+
+## Installation & Usage
+---
+
 ```
+You must have on your local computer installed Python
+
+```text
+git clone https://github.com/your-username/telegram-analyzer-ai.git
+cd telegram-analyzer-ai
+```
+
+
 Package manager
 ```text
 pip install uv
@@ -39,42 +90,46 @@ You need to install **pyproject.toml**:
 pip install pyproject.toml
 ```
 
-```
-## Versions
 
-[Python](https://www.python.org): **3.13**
-[Telethon](https://docs.telethon.dev/en/stable/#): **1.40**
-[Google Generative AI](): **0.1.0**
-
-
-
-### Env Setup
-
+### Environment Setup
 
 ---
 
+1. Register a new app on Telegram → https://my.telegram.org/auth?to=apps  
+   • Copy your **API_ID** and **API_HASH**.  
+2. Sign up for Google Generative AI → https://aistudio.google.com/  
+   • Copy your **AI_API_KEY**.  
+3. In the project root, create a file named `.env` containing:
 
-
-To set up a project, you need a create ".env"
-file in main directory and fill it with the following data:
-
- - Register on: https://my.telegram.org/auth?to=apps 
- - Create app for API_HASH, API_ID
- - Get GOOGLE_API_KEY from https://aistudio.google.com/.
+   ```dotenv
+   API_ID=your_telegram_api_id
+   API_HASH=your_telegram_api_hash
+   AI_API_KEY=your_google_ai_api_key
 
 Set your bot settings like this:
+```text 
+API_ID=<your-telegram-api_token>
+API_HASH=<your-telegram-api-hash>
+AI_API_KEY=<your-api_ai>
+```
 
-TELEGRAM_API_HASH=<your-telegram-api-hash>
-TELEGRAM_API_ID=<your-telegram-api_token>
+4.Your .env file should look like this:
+```text 
+API_ID=<your-telegram-api_token>
+API_HASH=<your-telegram-api-hash>
 AI_API_KEY=<your-api_ai>
 
-Set it in the same file.
-Your .env file should look like this:
-text
+```
 
 
-TELEGRAM_API_ID=<your-telegram-api-id>
-TELEGRAM_API_HASH=<your-telegram-api-hash>
 
-GOOGLE_API_KEY=<your-google-api-key>
 
+##Running the Project
+
+```text 
+python src/main.py
+```
+or
+```text 
+uv run src/main.py
+```
