@@ -8,7 +8,6 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 BASE_DIR = Path(__file__).parent.parent.parent 
 env_file = f"{BASE_DIR}/.env"
 
-
 class EnvSettings(BaseSettings):
     API_ID: int
     API_HASH: str
@@ -21,4 +20,5 @@ class Settings(BaseSettings):
     env: EnvSettings = EnvSettings()
 
 settings = Settings() 
+
 
