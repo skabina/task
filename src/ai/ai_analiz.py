@@ -1,15 +1,7 @@
 import json
-import google.generativeai as genai
-from config import ai_api_key
 
-def analiz_ai():
-   
-    genai.configure(api_key=ai_api_key)
-    model = genai.GenerativeModel("gemini-1.5-flash")
-
-    with open('chats_data.json', 'r', encoding='utf-8') as file:
-        chats = json.load(file)
-
+def ai_analiz(model, chats):
+         
     with open('ai_logs.txt', 'w', encoding='utf-8') as log_file:
 
         for chat in chats:
@@ -36,13 +28,9 @@ def analiz_ai():
 
                     Відповідай коротко, чітко, структуровано.
                     """
-
             try:
                 response = model.generate_content(prompt)
                 result = response.text.strip()
-
-                print(f"\n🔎 Аналіз чату: {chat_name}")
-                print(response.text)
 
                 log_file.write(f"ЧАТ: {chat_name}\n")
                 log_file.write(f"{result}\n")

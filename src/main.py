@@ -1,20 +1,41 @@
-import os
+import json
 import asyncio
-
-from telethon import TelegramClient
-from get_date import get_date, client
-from ai_analiz import analiz_ai
+from telegram_client.client import get_client
+from telegram_client.fetch_date import fetch_date
+from ai.ai_connect import ai_connect
+from ai.ai_analiz import ai_analiz
 
 async def main():
     
-    # get_date працює і зчитує 10 останніх діалогів за останній місяць
-    # Але окільки в мене було діалогів я зробив 10 діалогів вручну які відповідають запису 
-    
-    await client.start() 
-    await get_date(client)
-    await client.disconnect()
+    client = get_client()
+    await client.start()
 
-    analiz_ai() 
+    chat_list = await fetch_date(client)
+
+    chat_output = []
+    for chat in chat_list:
+        chat_output.append({
+            "chat_id": chat.chat_id,
+            "chat_name": chat.chat_name,
+            "messages": [
+                f"{msg.sender} [{msg.time}]: {msg.content}" 
+                for msg in chat.messages
+            ]
+        })
+
+    with open("chats.json", "w", encoding="utf-8") as f:
+        json.dump(chat_output, f, indent=2, ensure_ascii=False)
+
+    await client.disconnect()
+    
+
+    model = ai_connect()
+    with open('chats.json', 'r', encoding='utf-8') as file:
+        chats = json.load(file)
+    ai_analiz(model, chats)
+
+
+
 
 if __name__ == "__main__":
-    asyncio.run(main())  
+    asyncio.run(main())
