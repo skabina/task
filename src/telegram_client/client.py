@@ -6,7 +6,7 @@ from config.settings import settings
 
 def get_client():
    client = TelegramClient('date', settings.env.API_ID, settings.env.API_HASH)
-   return client
+   return client  
     
 
 

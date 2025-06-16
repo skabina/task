@@ -2,8 +2,11 @@ import json
 import asyncio
 from telegram_client.client import get_client
 from telegram_client.fetch_date import fetch_date
+from ai.ai_connect import ai_connect
+from ai.ai_analiz import ai_analiz
 
 async def main():
+    
     client = get_client()
     await client.start()
 
@@ -24,6 +27,14 @@ async def main():
         json.dump(chat_output, f, indent=2, ensure_ascii=False)
 
     await client.disconnect()
+    
+
+    model = ai_connect()
+    with open('chats.json', 'r', encoding='utf-8') as file:
+        chats = json.load(file)
+    ai_analiz(model, chats)
+
+
 
 
 if __name__ == "__main__":
