@@ -12,6 +12,6 @@ dependencies = [
   "telethon",
   "python-dotenv",
   "google-generativeai",
-  "uv",
+  "pydantic",
 ]
 

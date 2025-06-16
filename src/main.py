@@ -28,14 +28,10 @@ async def main():
 
     await client.disconnect()
     
-
     model = ai_connect()
     with open('chats.json', 'r', encoding='utf-8') as file:
         chats = json.load(file)
     ai_analiz(model, chats)
-
-
-
 
 if __name__ == "__main__":
     asyncio.run(main())

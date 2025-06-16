@@ -27,13 +27,23 @@ and sends them to a Google-powered generative AI for analysis.
 ## Project Structure
 ```text
 task/
-├── .env
+├── .venv
 ├── src
+│   ├── ai
+│   │   ├── __init__.py
+│   │   ├── ai_analiz.py
+│   │   └── ai_connect.py
+│   ├── config
+│   │   ├── __init__.py
+│   │   └── settings.py
+│   ├── models
+│   │   ├── __init__.py
+│   │   └── chat.py
+│   ├── telegram_client
+│   │   ├── __init__.py
+│   │   ├── client.py
+│   │   └── fetch_date.py
 │   ├── main.py   
-│   ├── analyze.py   
-│   ├── config.py  
-│   ├── ai_analiz.py
-│   └── get_date.py         
 ├── .gitignore                 
 ├── .env              
 ├── pyproject.toml            
@@ -43,8 +53,12 @@ task/
 ## Versions
 
 [Python](https://www.python.org): **3.13**
+
 [Telethon](https://docs.telethon.dev/en/stable/#): **1.40**
+
 [Google Generative AI](): **0.1.0**
+
+[Pydantic](https://docs.pydantic.dev/latest/): **2.11.7**
 
 ## Requirements
 
@@ -80,7 +94,6 @@ Linux/macOS:
 python3 -m venv venv
 source venv/bin/activate
 ```
-
 You need to install **pyproject.toml**:
 ```text
 pip install pyproject.toml
