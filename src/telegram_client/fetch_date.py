@@ -3,7 +3,6 @@ from typing import List
 from models.chat import ChatInfo, ChatMessage
 from telethon import TelegramClient
 from telegram_client.crud import sort_messages
-from utils.save_json import save_json
 
 one_month_ago = datetime.now(timezone.utc) - timedelta(days=30)
 
