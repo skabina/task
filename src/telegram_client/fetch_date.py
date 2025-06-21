@@ -5,7 +5,7 @@ from telethon import TelegramClient
 from telegram_client.crud import sort_messages
 from utils.save_json import save_json
 
-one_month_ago = datetime.now(timezone.utc) - timedelta(days=1)
+one_month_ago = datetime.now(timezone.utc) - timedelta(days=30)
 
 async def fetch_date(client: TelegramClient):
     chat_list: List[ChatInfo] = []

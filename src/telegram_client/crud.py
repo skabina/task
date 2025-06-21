@@ -1,5 +1,8 @@
 
 
+import json
+
+
 def sort_messages(chat_list):
     sorted_messages = reversed(chat_list)
     print(f"Sorted {sorted_messages} messages by time.")
@@ -19,3 +22,9 @@ def correct_message(chat_list):
         })
     print(f"Corrected {len(chat_output)} chats.")
     return chat_output
+
+
+
+def save_json(date):
+    with open('chats.json', 'w', encoding='utf-8') as f:
+        json.dump(date, f, ensure_ascii=False, indent=4)

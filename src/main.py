@@ -4,8 +4,8 @@ from telegram_client.client import get_client
 from telegram_client.fetch_date import fetch_date
 from ai.ai_connect import ai_connect
 from ai.ai_analiz import ai_analiz
-from utils.save_json import save_json
-from telegram_client.crud import correct_message
+
+from telegram_client.crud import correct_message, save_json
 
 async def main():
     
@@ -15,7 +15,7 @@ async def main():
 
     chat_output = correct_message(chat_list)
     save_json(chat_output)
-    
+
     model = ai_connect()
     ai_analiz(model, chat_output)
     
